@@ -6,6 +6,7 @@ import { EmployeeDashboard } from "./components/EmployeeDashboard";
 import { HrDashboard } from "./components/HrDashboard";
 import { AddEmployee } from "./components/AddEmployee";
 import { EmployeeDetails } from "./components/EmployeeDetails";
+import { EmployeeView } from "./components/EmployeeView";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/onboarding" element={<Onboarding />} />
 
-        <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
+        <Route path="/employee/dashboard" element={<EmployeeDashboard />}>
+          <Route path="employee-view" element={<EmployeeView />} />
+        </Route>
 
         <Route path="/hr/dashboard" element={<HrDashboard />}>
           <Route path="add-employee" element={<AddEmployee />} />

@@ -27,6 +27,7 @@ export function Login() {
 
       setMsg("Login successful.");
       if (typeOfUser === "employee") {
+        sessionStorage.setItem("emailId", matchedUser.email);
         navigate("/employee/dashboard");
       } else {
         navigate("/hr/dashboard");
