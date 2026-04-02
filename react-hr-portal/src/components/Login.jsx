@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export function Login() {
   let [email, setEmail] = useState("");
@@ -8,7 +8,7 @@ export function Login() {
   let [typeOfUser, setTypeOfUser] = useState("employee");
   let [msg, setMsg] = useState("");
   const navigate = useNavigate();
-  const LOGIN_URL = "http://localhost:3001/logins";
+  const LOGIN_URL = "http://localhost:3001/employeeDetails";
 
   const signIn = async (e) => {
     e.preventDefault();
@@ -54,6 +54,8 @@ export function Login() {
         <br />
         <input type="submit" value="Login" />
       </form>
+      <Link to="/onboarding">New Employee Onboarding</Link>
+      <br />
       <p>{msg}</p>
     </>
   );

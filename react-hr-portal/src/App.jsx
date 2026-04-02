@@ -1,9 +1,11 @@
 // import './App.css'
 import { Route, Routes } from "react-router-dom";
 import { Login } from "./components/Login";
-import { SignUp } from "./components/SignUp";
+import { Onboarding } from "./components/Onboarding";
 import { EmployeeDashboard } from "./components/EmployeeDashboard";
 import { HrDashboard } from "./components/HrDashboard";
+import { AddEmployee } from "./components/AddEmployee";
+import { EmployeeDetails } from "./components/EmployeeDetails";
 
 function App() {
   return (
@@ -12,11 +14,14 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/onboarding" element={<Onboarding />} />
 
         <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
 
-        <Route path="/hr/dashboard" element={<HrDashboard />} />
+        <Route path="/hr/dashboard" element={<HrDashboard />}>
+          <Route path="add-employee" element={<AddEmployee />} />
+          <Route path="all-employees" element={<EmployeeDetails />} />
+        </Route>
       </Routes>
     </>
   );

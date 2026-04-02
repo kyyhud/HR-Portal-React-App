@@ -1,23 +1,60 @@
 {
-  "logins": [
-    { "id": 1, "name": "admin", "email": "admin@email.com", "password": "admin123", "typeOfUser": "hr" },
-    { "id": 2, "name": "John Doe", "email": "john.doe@email.com", "password": "john123", "typeOfUser": "employee" }
-  ],
   "employeeDetails": [
     {
-      "id": 2,
+      "id": "1001",
+      "name": "admin",
+      "email": "admin@email.com",
+      "password": "admin123",
+      "typeOfUser": "hr"
+    },
+    {
+      "id": "1002",
       "name": "John Doe",
       "email": "john.doe@email.com",
       "password": "john123",
       "typeOfUser": "employee",
       "position": "Software Engineer",
-      "Salary": 80000,
+      "salary": "80000",
       "hireDate": "2020-01-15",
-      "SSN": "123-45-6789",
-      "Address": "123 Main St, Cityville",
-      "Phone": "555-1234",
-      "DateOfBirth": "1990-05-20",
-      "LeaveBalance": 18
+      "ssn": "123-45-6789",
+      "address": "",
+      "phone": "",
+      "dateOfBirth": "1990-05-20",
+      "emergencyContact": "",
+      "emergencyContactPhone": "",
+      "leaveBalance": 18
+    },
+    {
+      "id": "4957",
+      "email": "steve.smith@email.com",
+      "password": "steve123",
+      "name": "Steve Smith",
+      "position": "",
+      "salary": "",
+      "hireDate": "",
+      "ssn": "",
+      "address": "",
+      "phone": "",
+      "dateOfBirth": "",
+      "emergencyContact": "",
+      "emergencyContactPhone": "",
+      "leaveBalance": ""
+    },
+    {
+      "id": "ee2c",
+      "email": "sarah.jones@email.com",
+      "password": "srash123",
+      "name": "Sarah Jones",
+      "position": "",
+      "salary": "",
+      "hireDate": "",
+      "ssn": "",
+      "address": "",
+      "phone": "",
+      "dateOfBirth": "",
+      "emergencyContact": "",
+      "emergencyContactPhone": "",
+      "leaveBalance": ""
     }
   ]
 }
