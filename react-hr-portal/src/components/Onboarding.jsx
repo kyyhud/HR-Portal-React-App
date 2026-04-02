@@ -17,7 +17,7 @@ export function Onboarding() {
     dateOfBirth: "",
     emergencyContact: "",
     emergencyContactPhone: "",
-    leaveBalance: "",
+    leaveBalance: 0,
   });
   const [msg, setMsg] = useState("");
   const [flag, setFlag] = useState(true);
@@ -142,7 +142,7 @@ export function Onboarding() {
           <input type="text" name="emergencyContactPhone" value={formData.emergencyContactPhone} onChange={handleChange} required />
           <br />
           <label>Leave Balance:</label>
-          <input type="text" name="leaveBalance" value={formData.leaveBalance} onChange={handleChange} readOnly />
+          <input type="number" name="leaveBalance" value={formData.leaveBalance} onChange={handleChange} readOnly />
           <br />
           <br />
           <input type="submit" value="Complete Onboarding" />

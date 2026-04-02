@@ -9,7 +9,7 @@ export function AddEmployee() {
   const [hireDate, setHireDate] = useState("");
   const [ssn, setSsn] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [leaveBalance, setLeaveBalance] = useState("");
+  const [leaveBalance, setLeaveBalance] = useState(0);
   const [typeOfUser, setTypeOfUser] = useState("employee");
   const [msg, setMsg] = useState("");
   const EMPLOYEE_URL = "http://localhost:3001/employeeDetails";
@@ -43,7 +43,7 @@ export function AddEmployee() {
     setHireDate("");
     setSsn("");
     setDateOfBirth("");
-    setLeaveBalance("");
+    setLeaveBalance(0);
     setTypeOfUser("employee");
   };
 
@@ -75,7 +75,7 @@ export function AddEmployee() {
         <input type="date" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} required />
         <br />
         <label>Leave Balance:</label>
-        <input type="text" value={leaveBalance} onChange={(e) => setLeaveBalance(e.target.value)} required />
+        <input type="number" value={leaveBalance} onChange={(e) => setLeaveBalance(Number(e.target.value))} required />
         <br />
         <label>Type of User:</label>
         <select value={typeOfUser} onChange={(e) => setTypeOfUser(e.target.value)} required>

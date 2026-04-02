@@ -22,7 +22,7 @@
       "dateOfBirth": "1990-05-20",
       "emergencyContact": "Jane Doe",
       "emergencyContactPhone": "123-456-7890",
-      "leaveBalance": "18"
+      "leaveBalance": 18
     },
     {
       "id": "579b",
@@ -33,72 +33,15 @@
       "hireDate": "2018-01-20",
       "ssn": "000-000-0000",
       "dateOfBirth": "2001-03-04",
-      "leaveBalance": "14",
+      "leaveBalance": 12,
       "typeOfUser": "employee",
       "password": "kyle123",
       "address": "123 Main St, City, ST 12345",
       "phone": "123-456-7890",
       "emergencyContact": "Star Cat",
       "emergencyContactPhone": "123-456-7890"
-    },
-    {
-      "id": "1186",
-      "email": "kit1@email.com",
-      "name": "Kit Kat",
-      "position": "Manager",
-      "salary": "85000",
-      "hireDate": "2024-05-05",
-      "ssn": "000-000-0000",
-      "dateOfBirth": "1996-03-01",
-      "leaveBalance": "12",
-      "typeOfUser": "employee",
-      "password": "kit123",
-      "address": "123 Main St, City, ST 12345",
-      "phone": "111-111-1111",
-      "emergencyContact": "Nyla Bean",
-      "emergencyContactPhone": "222-222-2222"
     }
   ],
   "leaveInformation": [
-    {
-      "id": "7fc1",
-      "emailId": "john.doe@email.com",
-      "leaveReason": "sick",
-      "numberOfDays": 1,
-      "dateOfLeave": "2026-05-27",
-      "leaveStatus": "Approved"
-    },
-    {
-      "id": "c9b1",
-      "emailId": "kyle@email.com",
-      "leaveReason": "doctor",
-      "numberOfDays": 2,
-      "dateOfLeave": "2026-05-27",
-      "leaveStatus": "Approved"
-    },
-    {
-      "id": "868d",
-      "emailId": "kyle@email.com",
-      "leaveReason": "party",
-      "numberOfDays": 2,
-      "dateOfLeave": "2026-05-27",
-      "leaveStatus": "Rejected"
-    },
-    {
-      "id": "384a",
-      "emailId": "kyle@email.com",
-      "leaveReason": "Dancing",
-      "numberOfDays": 1,
-      "dateOfLeave": "2026-04-01",
-      "leaveStatus": "Pending"
-    },
-    {
-      "id": "fd5e",
-      "emailId": "kit1@email.com",
-      "leaveReason": "video games",
-      "numberOfDays": 3,
-      "dateOfLeave": "2026-07-04",
-      "leaveStatus": "Rejected"
-    }
   ]
 }

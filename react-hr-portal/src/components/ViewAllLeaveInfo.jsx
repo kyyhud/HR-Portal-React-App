@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useState, Link, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export function ViewAllLeaveInfo() {
   const [leaveInfo, setLeaveInfo] = useState([]);
   const [msg, setMsg] = useState("");
 
   const LEAVE_INFO_URL = "http://localhost:3001/leaveInformation";
+  const EMPLOYEE_URL = "http://localhost:3001/employeeDetails";
 
   useEffect(() => {
     allLeaveDetails();
@@ -17,10 +18,32 @@ export function ViewAllLeaveInfo() {
     setLeaveInfo(pendingLeaveInfo);
   };
 
-  const updateLeaveStatus = async (id, status) => {
+  const updateLeaveStatus = async (leave, status) => {
     setMsg("");
-    await axios.patch(`${LEAVE_INFO_URL}/${id}`, { leaveStatus: status });
-    setMsg(`Leave ${status}`);
+
+    try {
+      await axios.patch(`${LEAVE_INFO_URL}/${leave.id}`, { leaveStatus: status });
+
+      if (status === "Rejected" && leave.leaveStatus === "Pending") {
+        const employeeResponse = await axios.get(EMPLOYEE_URL);
+        const currentEmployee = employeeResponse.data.find((employee) => employee.email === leave.emailId);
+
+        if (!currentEmployee) {
+          setMsg("Leave rejected, but employee details were not found for refund.");
+          return;
+        }
+
+        const refundedBalance = (Number(currentEmployee.leaveBalance) || 0) + (Number(leave.numberOfDays) || 0);
+        await axios.patch(`${EMPLOYEE_URL}/${currentEmployee.id}`, { leaveBalance: refundedBalance });
+        setMsg("Leave Rejected and leave balance refunded.");
+        return;
+      }
+
+      setMsg(`Leave ${status}`);
+    } catch (error) {
+      setMsg(`Failed to update leave to ${status}. Please try again.`);
+      console.error("Failed to update leave status:", error);
+    }
   };
 
   return (
@@ -45,8 +68,8 @@ export function ViewAllLeaveInfo() {
             <p>
               <strong>Leave Status:</strong> {leave.leaveStatus}
             </p>
-            <input type="button" value="Approve" onClick={() => updateLeaveStatus(leave.id, "Approved")} />
-            <input type="button" value="Reject" onClick={() => updateLeaveStatus(leave.id, "Rejected")} />
+            <input type="button" value="Approve" onClick={() => updateLeaveStatus(leave, "Approved")} />
+            <input type="button" value="Reject" onClick={() => updateLeaveStatus(leave, "Rejected")} />
             <br />
           </li>
         ))}
