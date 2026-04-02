@@ -41,5 +41,39 @@
       "emergencyContact": "Star Cat",
       "emergencyContactPhone": "123-456-7890"
     }
+  ],
+  "leaveInformation": [
+    {
+      "id": "7fc1",
+      "emailId": "john.doe@email.com",
+      "leaveReason": "sick",
+      "numberOfDays": 1,
+      "dateOfLeave": "2026-05-27",
+      "leaveStatus": "Approved"
+    },
+    {
+      "id": "c9b1",
+      "emailId": "kyle@email.com",
+      "leaveReason": "doctor",
+      "numberOfDays": 2,
+      "dateOfLeave": "2026-05-27",
+      "leaveStatus": "Approved"
+    },
+    {
+      "id": "868d",
+      "emailId": "kyle@email.com",
+      "leaveReason": "party",
+      "numberOfDays": 2,
+      "dateOfLeave": "2026-05-27",
+      "leaveStatus": "Rejected"
+    },
+    {
+      "id": "384a",
+      "emailId": "kyle@email.com",
+      "leaveReason": "Dancing",
+      "numberOfDays": 1,
+      "dateOfLeave": "2026-04-01",
+      "leaveStatus": "Pending"
+    }
   ]
 }

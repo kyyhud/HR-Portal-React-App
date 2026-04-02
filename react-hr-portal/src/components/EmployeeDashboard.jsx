@@ -12,7 +12,7 @@ export function EmployeeDashboard() {
   return (
     <>
       <h2>Employee Dashboard: {emailId}</h2>
-      <Link to="employee-view">View Your Details</Link>
+      <Link to="employee-view">View Your Details</Link> |<Link to="apply-leave">Apply for Leave</Link>
       <br />
       <input type="button" value="logout" onClick={logout} />
       <Outlet />

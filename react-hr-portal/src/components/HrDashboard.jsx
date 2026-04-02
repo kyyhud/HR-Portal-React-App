@@ -9,7 +9,7 @@ export function HrDashboard() {
   return (
     <>
       <h2>HR Dashboard</h2>
-      <Link to="add-employee">Add New Employee</Link> | <Link to="all-employees">View All Employees</Link>
+      <Link to="add-employee">Add New Employee</Link>|<Link to="all-employees">View All Employees</Link>|<Link to="all-leave-info">View All Leave Info</Link>
       <br />
       <input type="button" value="logout" onClick={logout} />
       <br />
