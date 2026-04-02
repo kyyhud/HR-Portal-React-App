@@ -9,6 +9,7 @@ import { EmployeeDetails } from "./components/EmployeeDetails";
 import { EmployeeView } from "./components/EmployeeView";
 import { ApplyLeave } from "./components/ApplyLeave";
 import { ViewAllLeaveInfo } from "./components/ViewAllLeaveInfo";
+import { ViewLeaveStatus } from "./components/ViewLeaveStatus";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/employee/dashboard" element={<EmployeeDashboard />}>
           <Route path="employee-view" element={<EmployeeView />} />
           <Route path="apply-leave" element={<ApplyLeave />} />
+          <Route path="view-leave-status" element={<ViewLeaveStatus />} />
         </Route>
 
         <Route path="/hr/dashboard" element={<HrDashboard />}>
