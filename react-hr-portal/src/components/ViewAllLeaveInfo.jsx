@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import "./ViewAllLeaveInfo.css";
 
 export function ViewAllLeaveInfo() {
   const [leaveInfo, setLeaveInfo] = useState([]);
@@ -47,33 +48,47 @@ export function ViewAllLeaveInfo() {
   };
 
   return (
-    <>
-      <h2>All Leave Requests</h2>
-      <p>{msg}</p>
-      <ul>
+    <section className="page page-all-leave-info">
+      <div className="page-title">
+        <h2>All Leave Requests</h2>
+        <p>Pending requests: {leaveInfo.length}</p>
+      </div>
+
+      {msg ? <p className="status-message">{msg}</p> : null}
+
+      <ul className="cards">
         {leaveInfo.map((leave) => (
-          <li key={leave.id}>
-            <p>
-              <strong>Email ID:</strong> {leave.emailId}
-            </p>
-            <p>
-              <strong>Reason for Leave:</strong> {leave.leaveReason}
-            </p>
-            <p>
-              <strong>Number of Days:</strong> {leave.numberOfDays}
-            </p>
-            <p>
-              <strong>Start Date of Leave:</strong> {leave.dateOfLeave}
-            </p>
-            <p>
-              <strong>Leave Status:</strong> {leave.leaveStatus}
-            </p>
-            <input type="button" value="Approve" onClick={() => updateLeaveStatus(leave, "Approved")} />
-            <input type="button" value="Reject" onClick={() => updateLeaveStatus(leave, "Rejected")} />
-            <br />
+          <li className="card" key={leave.id}>
+            <div className="info-list">
+              <p className="info-item">
+                <strong>Email ID</strong>
+                <span>{leave.emailId}</span>
+              </p>
+              <p className="info-item">
+                <strong>Reason for Leave</strong>
+                <span>{leave.leaveReason}</span>
+              </p>
+              <p className="info-item">
+                <strong>Number of Days</strong>
+                <span>{leave.numberOfDays}</span>
+              </p>
+              <p className="info-item">
+                <strong>Start Date of Leave</strong>
+                <span>{leave.dateOfLeave}</span>
+              </p>
+              <p className="info-item">
+                <strong>Leave Status</strong>
+                <span>{leave.leaveStatus}</span>
+              </p>
+            </div>
+
+            <div className="card-actions">
+              <input type="button" value="Approve" onClick={() => updateLeaveStatus(leave, "Approved")} />
+              <input className="btn-danger" type="button" value="Reject" onClick={() => updateLeaveStatus(leave, "Rejected")} />
+            </div>
           </li>
         ))}
       </ul>
-    </>
+    </section>
   );
 }

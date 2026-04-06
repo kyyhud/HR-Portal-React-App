@@ -33,7 +33,7 @@
       "hireDate": "2018-01-20",
       "ssn": "000-000-0000",
       "dateOfBirth": "2001-03-04",
-      "leaveBalance": 12,
+      "leaveBalance": 7,
       "typeOfUser": "employee",
       "password": "kyle123",
       "address": "123 Main St, City, ST 12345",
@@ -43,5 +43,21 @@
     }
   ],
   "leaveInformation": [
+    {
+      "id": "852d",
+      "emailId": "john.doe@email.com",
+      "leaveReason": "sick",
+      "numberOfDays": 1,
+      "dateOfLeave": "2026-04-13",
+      "leaveStatus": "Pending"
+    },
+    {
+      "id": "14db",
+      "emailId": "kyle@email.com",
+      "leaveReason": "vacation",
+      "numberOfDays": 5,
+      "dateOfLeave": "2026-05-08",
+      "leaveStatus": "Approved"
+    }
   ]
 }

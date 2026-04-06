@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./ApplyLeave.css";
 
 export function ApplyLeave() {
   const [leaveReason, setReason] = useState("");
@@ -104,45 +105,70 @@ export function ApplyLeave() {
   const projectedBalance = showProjectedBalance ? leaveBalance - requestedDays : null;
 
   return (
-    <>
-      <h2>Apply Leave</h2>
-      <p>
-        <strong>Current Leave Balance:</strong> {isLoadingBalance ? "Loading..." : (leaveBalance ?? "N/A")}
-      </p>
-      <form onSubmit={applyLeaveDetails}>
-        <label>Reason for Leave: </label>
-        <input type="text" name="reason" value={leaveReason} onChange={(e) => setReason(e.target.value)} required disabled={isSubmitting} />
-        <br />
-        <label>Number of Days: </label>
-        <input
-          type="number"
-          name="numberOfDays"
-          value={numberOfDays}
-          onChange={(e) => setNumberOfDays(e.target.value)}
-          min="1"
-          max={leaveBalance ?? undefined}
-          required
-          disabled={isLoadingBalance || leaveBalance === 0 || isSubmitting}
-        />
-        <br />
-        <label>Start Date of Leave: </label>
-        <input
-          type="date"
-          name="dateOfLeave"
-          value={dateOfLeave}
-          onChange={(e) => setDateOfLeave(e.target.value)}
-          required
-          disabled={isLoadingBalance || leaveBalance === 0 || isSubmitting}
-        />
-        <br />
-        <input type="submit" value={isSubmitting ? "Applying..." : "Apply for Leave"} disabled={isLoadingBalance || leaveBalance === 0 || isSubmitting} />
-      </form>
-      {showProjectedBalance ? (
+    <section className="page page-apply-leave">
+      <div className="page-title">
+        <h2>Apply Leave</h2>
         <p>
+          <strong>Current Leave Balance:</strong> {isLoadingBalance ? "Loading..." : (leaveBalance ?? "N/A")}
+        </p>
+      </div>
+
+      <form className="form-card" onSubmit={applyLeaveDetails}>
+        <div className="form-grid apply-leave-grid">
+          <div className="input-group">
+            <label htmlFor="leaveReason">Reason for Leave</label>
+            <input
+              id="leaveReason"
+              type="text"
+              name="reason"
+              value={leaveReason}
+              onChange={(e) => setReason(e.target.value)}
+              required
+              disabled={isSubmitting}
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="leaveDays">Number of Days</label>
+            <input
+              id="leaveDays"
+              type="number"
+              name="numberOfDays"
+              value={numberOfDays}
+              onChange={(e) => setNumberOfDays(e.target.value)}
+              min="1"
+              max={leaveBalance ?? undefined}
+              required
+              disabled={isLoadingBalance || leaveBalance === 0 || isSubmitting}
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="leaveDate">Start Date of Leave</label>
+            <input
+              id="leaveDate"
+              type="date"
+              name="dateOfLeave"
+              value={dateOfLeave}
+              onChange={(e) => setDateOfLeave(e.target.value)}
+              required
+              disabled={isLoadingBalance || leaveBalance === 0 || isSubmitting}
+            />
+          </div>
+        </div>
+        <br />
+        <div className="form-actions">
+          <input type="submit" value={isSubmitting ? "Applying..." : "Apply for Leave"} disabled={isLoadingBalance || leaveBalance === 0 || isSubmitting} />
+        </div>
+      </form>
+
+      {showProjectedBalance ? (
+        <p className="panel apply-leave-balance">
           <strong>Projected Balance:</strong> {projectedBalance}
         </p>
       ) : null}
-      <p>{msg}</p>
-    </>
+
+      {msg ? <p className="status-message">{msg}</p> : null}
+    </section>
   );
 }

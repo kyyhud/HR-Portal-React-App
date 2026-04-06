@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import "./AddEmployee.css";
 
 export function AddEmployee() {
   const [email, setEmail] = useState("");
@@ -48,45 +49,69 @@ export function AddEmployee() {
   };
 
   return (
-    <>
-      <h2>Add Employee</h2>
-      <p>Please complete all fields.</p>
-      <br />
-      <form onSubmit={AddEmployee}>
-        <label>Name:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+    <section className="page page-add-employee">
+      <div className="page-title">
+        <h2>Add Employee</h2>
+        <p>Please complete all fields.</p>
+      </div>
+
+      <form className="form-card" onSubmit={AddEmployee}>
+        <div className="form-grid">
+          <div className="input-group">
+            <label htmlFor="addEmpName">Name</label>
+            <input id="addEmpName" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="addEmpEmail">Email</label>
+            <input id="addEmpEmail" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="addEmpPosition">Position</label>
+            <input id="addEmpPosition" type="text" value={position} onChange={(e) => setPosition(e.target.value)} required />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="addEmpSalary">Salary</label>
+            <input id="addEmpSalary" type="text" value={salary} onChange={(e) => setSalary(e.target.value)} required />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="addEmpHireDate">Hire Date</label>
+            <input id="addEmpHireDate" type="date" value={hireDate} onChange={(e) => setHireDate(e.target.value)} required />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="addEmpSsn">SSN</label>
+            <input id="addEmpSsn" type="text" value={ssn} onChange={(e) => setSsn(e.target.value)} required />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="addEmpDob">Date of Birth</label>
+            <input id="addEmpDob" type="date" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} required />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="addEmpLeave">Leave Balance</label>
+            <input id="addEmpLeave" type="number" value={leaveBalance} onChange={(e) => setLeaveBalance(Number(e.target.value))} required />
+          </div>
+
+          <div className="input-group add-employee-user-type">
+            <label htmlFor="addEmpType">Type of User</label>
+            <select id="addEmpType" value={typeOfUser} onChange={(e) => setTypeOfUser(e.target.value)} required>
+              <option value="employee">Employee</option>
+              <option value="hr">HR</option>
+            </select>
+          </div>
+        </div>
         <br />
-        <label>Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <br />
-        <label>Position:</label>
-        <input type="text" value={position} onChange={(e) => setPosition(e.target.value)} required />
-        <br />
-        <label>Salary:</label>
-        <input type="text" value={salary} onChange={(e) => setSalary(e.target.value)} required />
-        <br />
-        <label>Hire Date:</label>
-        <input type="date" value={hireDate} onChange={(e) => setHireDate(e.target.value)} required />
-        <br />
-        <label>SSN:</label>
-        <input type="text" value={ssn} onChange={(e) => setSsn(e.target.value)} required />
-        <br />
-        <label>Date of Birth:</label>
-        <input type="date" value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} required />
-        <br />
-        <label>Leave Balance:</label>
-        <input type="number" value={leaveBalance} onChange={(e) => setLeaveBalance(Number(e.target.value))} required />
-        <br />
-        <label>Type of User:</label>
-        <select value={typeOfUser} onChange={(e) => setTypeOfUser(e.target.value)} required>
-          <option value="employee">Employee</option>
-          <option value="hr">HR</option>
-        </select>
-        <br />
-        <input type="submit" value="Add Employee" />
-        <br />
-        <p>{msg}</p>
+        <div className="form-actions">
+          <input type="submit" value="Add Employee" />
+        </div>
+
+        {msg ? <p className="status-message">{msg}</p> : null}
       </form>
-    </>
+    </section>
   );
 }

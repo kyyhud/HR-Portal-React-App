@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./Onboarding.css";
 
 export function Onboarding() {
   const [formData, setFormData] = useState({
@@ -90,67 +91,123 @@ export function Onboarding() {
     }));
   }
   return (
-    <>
-      <h2>Onboarding</h2>
+    <section className="page page-onboarding">
+      <div className="page-title">
+        <h2>Onboarding</h2>
+        <p>Verify your profile and complete your employee details.</p>
+      </div>
+
       {flag ? (
-        <div>
+        <div className="form-card onboarding-card">
           <form onSubmit={verifyEmail}>
-            <label>Verify Email & Date of Birth to begin Onboarding:</label>
+            <p className="onboarding-heading">Verify email and date of birth to begin onboarding.</p>
+
+            <div className="form-grid">
+              <div className="input-group">
+                <label htmlFor="verifyEmail">Email</label>
+                <input id="verifyEmail" type="email" name="email" placeholder="Enter your email" value={formData.email} onChange={handleChange} required />
+              </div>
+
+              <div className="input-group">
+                <label htmlFor="verifyDob">Date of Birth</label>
+                <input id="verifyDob" type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} required />
+              </div>
+            </div>
             <br />
-            <input type="email" name="email" placeholder="Enter your email" value={formData.email} onChange={handleChange} required />
-            <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} required />
-            <input type="submit" value="Verify Employee" />
-            <p>{msg}</p>
+            <div className="form-actions">
+              <input type="submit" value="Verify Employee" />
+            </div>
+
+            {msg ? <p className="status-message">{msg}</p> : null}
           </form>
         </div>
       ) : (
-        <form onSubmit={handleOnboard}>
-          <label>Name:</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} readOnly />
+        <form className="form-card" onSubmit={handleOnboard}>
+          <div className="form-grid">
+            <div className="input-group">
+              <label htmlFor="onboardName">Name</label>
+              <input id="onboardName" type="text" name="name" value={formData.name} onChange={handleChange} readOnly />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardEmail">Email</label>
+              <input id="onboardEmail" type="email" name="email" value={formData.email} onChange={handleChange} required />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardPassword">Password</label>
+              <input id="onboardPassword" type="password" name="password" value={formData.password} onChange={handleChange} required />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardPosition">Position</label>
+              <input id="onboardPosition" type="text" name="position" value={formData.position} onChange={handleChange} readOnly />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardSalary">Salary</label>
+              <input id="onboardSalary" type="text" name="salary" value={formData.salary} onChange={handleChange} readOnly />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardHireDate">Hire Date</label>
+              <input id="onboardHireDate" type="date" name="hireDate" value={formData.hireDate} onChange={handleChange} readOnly />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardSsn">SSN</label>
+              <input id="onboardSsn" type="text" name="ssn" value={formData.ssn} onChange={handleChange} readOnly />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardAddress">Address</label>
+              <input id="onboardAddress" type="text" name="address" value={formData.address} onChange={handleChange} required />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardPhone">Phone</label>
+              <input id="onboardPhone" type="text" name="phone" value={formData.phone} onChange={handleChange} required />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardDob">Date of Birth</label>
+              <input id="onboardDob" type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} readOnly />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardEmergency">Emergency Contact</label>
+              <input id="onboardEmergency" type="text" name="emergencyContact" value={formData.emergencyContact} onChange={handleChange} required />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardEmergencyPhone">Emergency Contact Phone</label>
+              <input
+                id="onboardEmergencyPhone"
+                type="text"
+                name="emergencyContactPhone"
+                value={formData.emergencyContactPhone}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="onboardLeave">Leave Balance</label>
+              <input id="onboardLeave" type="number" name="leaveBalance" value={formData.leaveBalance} onChange={handleChange} readOnly />
+            </div>
+          </div>
           <br />
-          <label>Email:</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-          <br />
-          <label>Password:</label>
-          <input type="password" name="password" value={formData.password} onChange={handleChange} required />
-          <br />
-          <label>Position:</label>
-          <input type="text" name="position" value={formData.position} onChange={handleChange} readOnly />
-          <br />
-          <label>Salary:</label>
-          <input type="text" name="salary" value={formData.salary} onChange={handleChange} readOnly />
-          <br />
-          <label>Hire Date:</label>
-          <input type="date" name="hireDate" value={formData.hireDate} onChange={handleChange} readOnly />
-          <br />
-          <label>SSN:</label>
-          <input type="text" name="ssn" value={formData.ssn} onChange={handleChange} readOnly />
-          <br />
-          <label>Address:</label>
-          <input type="text" name="address" value={formData.address} onChange={handleChange} required />
-          <br />
-          <label>Phone:</label>
-          <input type="text" name="phone" value={formData.phone} onChange={handleChange} required />
-          <br />
-          <label>Date of Birth:</label>
-          <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} readOnly />
-          <br />
-          <label>Emergency Contact:</label>
-          <input type="text" name="emergencyContact" value={formData.emergencyContact} onChange={handleChange} required />
-          <br />
-          <label>Emergency Contact Phone:</label>
-          <input type="text" name="emergencyContactPhone" value={formData.emergencyContactPhone} onChange={handleChange} required />
-          <br />
-          <label>Leave Balance:</label>
-          <input type="number" name="leaveBalance" value={formData.leaveBalance} onChange={handleChange} readOnly />
-          <br />
-          <br />
-          <input type="submit" value="Complete Onboarding" />
-          <br />
-          <p>{msg}</p>
+          <div className="form-actions">
+            <input type="submit" value="Complete Onboarding" />
+          </div>
+
+          {msg ? <p className="status-message">{msg}</p> : null}
         </form>
       )}
-      <Link to="/">Back to Login</Link>
-    </>
+
+      <Link className="onboarding-back" to="/">
+        Back to Login
+      </Link>
+    </section>
   );
 }

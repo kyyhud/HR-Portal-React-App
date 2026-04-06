@@ -1,0 +1,19 @@
+.page-apply-leave {
+  max-width: 820px;
+}
+
+.apply-leave-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.apply-leave-balance {
+  display: inline-flex;
+  gap: 0.4rem;
+  width: fit-content;
+}
+
+@media (max-width: 860px) {
+  .apply-leave-grid {
+    grid-template-columns: 1fr;
+  }
+}

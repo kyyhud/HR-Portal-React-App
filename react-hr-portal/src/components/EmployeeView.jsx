@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./EmployeeView.css";
 
 export function EmployeeView() {
   const [employee, setEmployee] = useState([]);
@@ -17,40 +18,53 @@ export function EmployeeView() {
   };
 
   return (
-    <>
+    <section className="page page-employee-view">
       <h2>Your Employee Details</h2>
-      <div>
-        <p>
-          <strong>Name:</strong> {employee.name}
-        </p>
-        <p>
-          <strong>Email:</strong> {employee.email}
-        </p>
-        <p>
-          <strong>Address:</strong> {employee.address}
-        </p>
-        <p>
-          <strong>Phone Number:</strong> {employee.phone}
-        </p>
-        <p>
-          <strong>Emergency Contact:</strong> {employee.emergencyContact}
-        </p>
-        <p>
-          <strong>Emergency Contact Phone:</strong> {employee.emergencyContactPhone}
-        </p>
-        <p>
-          <strong>Position:</strong> {employee.position}
-        </p>
-        <p>
-          <strong>Salary:</strong> {employee.salary}
-        </p>
-        <p>
-          <strong>Hire Date:</strong> {employee.hireDate}
-        </p>
-        <p>
-          <strong>Leave Balance:</strong> {employee.leaveBalance}
-        </p>
+
+      <div className="panel employee-view-panel">
+        <div className="info-list">
+          <p className="info-item">
+            <strong>Name</strong>
+            <span>{employee.name}</span>
+          </p>
+          <p className="info-item">
+            <strong>Email</strong>
+            <span>{employee.email}</span>
+          </p>
+          <p className="info-item">
+            <strong>Address</strong>
+            <span>{employee.address}</span>
+          </p>
+          <p className="info-item">
+            <strong>Phone Number</strong>
+            <span>{employee.phone}</span>
+          </p>
+          <p className="info-item">
+            <strong>Emergency Contact</strong>
+            <span>{employee.emergencyContact}</span>
+          </p>
+          <p className="info-item">
+            <strong>Emergency Contact Phone</strong>
+            <span>{employee.emergencyContactPhone}</span>
+          </p>
+          <p className="info-item">
+            <strong>Position</strong>
+            <span>{employee.position}</span>
+          </p>
+          <p className="info-item">
+            <strong>Salary</strong>
+            <span>{employee.salary}</span>
+          </p>
+          <p className="info-item">
+            <strong>Hire Date</strong>
+            <span>{employee.hireDate}</span>
+          </p>
+          <p className="info-item">
+            <strong>Leave Balance</strong>
+            <span>{employee.leaveBalance}</span>
+          </p>
+        </div>
       </div>
-    </>
+    </section>
   );
 }

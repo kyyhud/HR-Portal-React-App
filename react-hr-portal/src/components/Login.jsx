@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import "./Login.css";
 
 export function Login() {
   let [email, setEmail] = useState("");
@@ -38,26 +39,42 @@ export function Login() {
   };
 
   return (
-    <>
-      <h2>Login</h2>
-      <form onSubmit={signIn}>
-        <label>Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <br />
-        <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <br />
-        <label>Type of User:</label>
-        <select value={typeOfUser} onChange={(e) => setTypeOfUser(e.target.value)}>
-          <option value="employee">Employee</option>
-          <option value="hr">HR</option>
-        </select>
-        <br />
-        <input type="submit" value="Login" />
+    <section className="page page-login">
+      <div className="page-title">
+        <h2>Login</h2>
+        <p>Sign in to continue to your dashboard.</p>
+      </div>
+
+      <form className="form-card login-card" onSubmit={signIn}>
+        <div className="form-grid login-grid">
+          <div className="input-group">
+            <label htmlFor="loginEmail">Email</label>
+            <input id="loginEmail" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="loginPassword">Password</label>
+            <input id="loginPassword" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="loginType">Type of User</label>
+          <select id="loginType" value={typeOfUser} onChange={(e) => setTypeOfUser(e.target.value)}>
+            <option value="employee">Employee</option>
+            <option value="hr">HR</option>
+          </select>
+        </div>
+
+        <div className="form-actions login-actions">
+          <input type="submit" value="Login" />
+          <Link className="login-link" to="/onboarding">
+            New Employee Onboarding
+          </Link>
+        </div>
       </form>
-      <Link to="/onboarding">New Employee Onboarding</Link>
-      <br />
-      <p>{msg}</p>
-    </>
+
+      {msg ? <p className="status-message">{msg}</p> : null}
+    </section>
   );
 }

@@ -1,0 +1,8 @@
+.page-all-leave-info {
+  max-width: 920px;
+}
+
+.page-all-leave-info .card {
+  display: grid;
+  gap: 0.8rem;
+}

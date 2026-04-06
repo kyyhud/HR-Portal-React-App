@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState, Link, useEffect } from "react";
+import { useState, useEffect } from "react";
+import "./ViewLeaveStatus.css";
 
 export function ViewLeaveStatus() {
   const [leaveInfo, setLeaveInfo] = useState([]);
@@ -18,28 +19,40 @@ export function ViewLeaveStatus() {
   };
 
   return (
-    <>
-      <h2>View Leave Status</h2>
-      {leaveInfo.map((leave, index) => (
-        <div key={leave.id || index}>
-          <p>
-            <strong>Email ID:</strong> {leave.emailId}
-          </p>
-          <p>
-            <strong>Reason for Leave:</strong> {leave.leaveReason}
-          </p>
-          <p>
-            <strong>Number of Days:</strong> {leave.numberOfDays}
-          </p>
-          <p>
-            <strong>Start Date of Leave:</strong> {leave.dateOfLeave}
-          </p>
-          <p>
-            <strong>Leave Status:</strong> {leave.leaveStatus}
-          </p>
-          <br />
-        </div>
-      ))}
-    </>
+    <section className="page page-leave-status">
+      <div className="page-title">
+        <h2>View Leave Status</h2>
+        <p>Requests submitted: {leaveInfo.length}</p>
+      </div>
+
+      <div className="cards">
+        {leaveInfo.map((leave, index) => (
+          <div className="card" key={leave.id || index}>
+            <div className="info-list">
+              <p className="info-item">
+                <strong>Email ID</strong>
+                <span>{leave.emailId}</span>
+              </p>
+              <p className="info-item">
+                <strong>Reason for Leave</strong>
+                <span>{leave.leaveReason}</span>
+              </p>
+              <p className="info-item">
+                <strong>Number of Days</strong>
+                <span>{leave.numberOfDays}</span>
+              </p>
+              <p className="info-item">
+                <strong>Start Date of Leave</strong>
+                <span>{leave.dateOfLeave}</span>
+              </p>
+              <p className="info-item">
+                <strong>Leave Status</strong>
+                <span>{leave.leaveStatus}</span>
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
